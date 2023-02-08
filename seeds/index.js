@@ -25,6 +25,10 @@ const seedDB = async () => {
             author: '63de3ee06dbc3f237d3b0e70',
             location: `${cities[random1000].City},${cities[random1000].State}`,
             title: `${sample(descriptors)} ${sample(places)}`,
+            geometry: {
+                type: "Point",
+                coordinates: [cities[random1000].Longitude, cities[random1000].Latitude]
+            },
             images: [{
                 url: 'https://res.cloudinary.com/djdq19ule/image/upload/v1675617114/CampSter/csemm5yikyqrfn5t2zap.jpg',
                 filename: 'CampSter/csemm5yikyqrfn5t2zap',
@@ -40,3 +44,4 @@ const seedDB = async () => {
     }
 }
 seedDB().then(() => { mongoose.connection.close() });
+

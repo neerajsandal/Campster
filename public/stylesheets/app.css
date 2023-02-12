@@ -1,23 +1,28 @@
 .emailText,
 .passText {
     display: block;
-    font-weight: 300;
+    font-weight: 400;
     font-style: italic;
     padding: 5px;
 }
 
-label.valid .emailText,
-label.valid .passText {
-    color: #00ff00;
+div.valid .emailText,
+div.valid .passText,
+div.valid .userText {
+    /* font-weight: bold; */
+    color: #198754;
 }
 
-label.invalid .emailText,
-label.invalid .passText {
+
+div.invalid .emailText,
+div.invalid .passText,
+div.invalid .userText {
+    /* font-weight: bold; */
     color: #f00;
 }
 
-label.valid::before,
-label.invalid::before {
+div.valid::before,
+div.invalid::before {
     content: "";
     position: absolute;
     width: 24px;
@@ -27,10 +32,10 @@ label.invalid::before {
     z-index: 100;
 }
 
-label.valid::before {
+/* label.valid::before {
     background: url(/check.svg)no-repeat center /cover;
 }
 
 label.invalid::before {
     background: url(/error.png)no-repeat center /cover;
-}
+} */

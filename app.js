@@ -10,13 +10,15 @@ const methodOverride = require('method-override')
 const ejsMate = require('ejs-mate')
 const session = require('express-session');
 const flash = require('connect-flash')
-const passport = require('passport');
-const localStrategy = require('passport-local')
+// const passport = require('passport');
+// const localStrategy = require('passport-local')
+const _passport = require('./utilitis/passport')
 
 const ExpressError = require('./utilitis/ExpressError');
 const userRoute = require('./Routes/userRoute')
 const campgroundRoute = require('./Routes/campgroundRoute')
 const reviewRoute = require('./Routes/reviewRoute')
+const oAuthRoute = require('./Routes/oAuth')
 const User = require('./models/user')
 
 mongoose.connect('mongodb://127.0.0.1:27017/Campster', {
@@ -52,12 +54,13 @@ app.use(session(sessionOptions))
 app.use(flash())
 // passport.session must be after session
 
-app.use(passport.initialize()); // for initialise the passport
-app.use(passport.session()); // for making your application for persistent login session
-passport.use(new localStrategy(User.authenticate()));
-passport.serializeUser(User.serializeUser()); // for serialise the users into the sessions
-passport.deserializeUser(User.deserializeUser());
+// app.use(passport.initialize()); // for initialise the passport
+// app.use(passport.session()); // for making your application for persistent login session
+// passport.use(new localStrategy(User.authenticate()));
+// passport.serializeUser(User.serializeUser()); // for serialise the users into the sessions
+// passport.deserializeUser(User.deserializeUser());
 
+_passport.passportInit(app);
 app.use((req, res, next) => {
     // console.log(req.session)
     res.locals.currentUser = req.user;
@@ -72,6 +75,7 @@ app.get('/', async (req, res) => {
 })
 
 app.use('/', userRoute);
+app.use('/auth', oAuthRoute)
 app.use('/campgrounds', campgroundRoute)
 app.use('/campgrounds/:id/reviews', reviewRoute)
 

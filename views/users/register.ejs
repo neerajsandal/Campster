@@ -42,7 +42,11 @@
                                 </div>
                             </div>
                             <div class="d-grid mx-auto">
-                                <input type="submit" name="submit" value="submit" class="btn btn-success">
+                                <input type="submit" name="submit" value="Register" class="btn btn-success">
+                                <a href="/auth/google" class="btn btn-primary mt-2"> <img width="20px"
+                                        style="margin-top:0px; margin-right:0px" alt="Google sign-in"
+                                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png" />
+                                    Register With Google</a>
                             </div>
                         </form>
 
@@ -59,7 +63,7 @@
         user.addEventListener('input', () => {
             const userBox = document.querySelector('.userBox');
             const userText = document.querySelector('.userText');
-            const userPattern = /[A-Za-z0-9_]+[A-Za-z0-9_]+$/;
+            const userPattern = /^([_]?[a-z0-9]+)+([_]?[a-z0-9]+)*$/;
             // Check for white space
             if (user.value.match(userPattern)) {
                 userBox.classList.add('valid');
@@ -94,7 +98,7 @@
         password.addEventListener('input', () => {
             const passBox = document.querySelector('.passBox');
             const passText = document.querySelector('.passText');
-            const passPattern = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/;
+            const passPattern = /(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9])(?=.{8,})/;
 
             if (password.value.match(passPattern)) {
                 passBox.classList.add('valid');

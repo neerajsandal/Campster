@@ -1,5 +1,5 @@
 <% layout('layouts/boilerplate')%>
-
+    <link rel="stylesheet" href="/stylesheets/app.css">
     <div class="container d-flex justify-content-center align-items-center mb-3">
         <div class="row">
             <div class="col-md-6 offset-md-3 col-xl-4 offset-xl-4">
@@ -25,8 +25,12 @@
                                     Looks good!
                                 </div>
                             </div>
-                            <div class="d-grid mx-auto">
+                            <div class="d-grid">
                                 <button class="btn btn-success">Login</button>
+                                <a href="/auth/google" class="btn btn-primary mt-2"> <img width="20px"
+                                        style="margin-top:0px; margin-right:0px" alt="Google sign-in"
+                                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png" />
+                                    Login With Google</a>
                             </div>
                         </form>
                     </div>

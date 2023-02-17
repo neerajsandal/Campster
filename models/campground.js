@@ -1,5 +1,7 @@
 const { func } = require('joi');
 const mongoose = require('mongoose');
+const mongoosePaginate = require('mongoose-paginate-v2');
+const { campgroundSchema } = require('../schema');
 const Review = require('./review')
 const Schema = mongoose.Schema;
 
@@ -54,6 +56,9 @@ CampgroundSchema.post('findOneAndDelete', async function (doc) {
         await Review.deleteMany({ _id: { $in: doc.review } })
     }
 })
+
+CampgroundSchema.plugin(mongoosePaginate);
+
 const Campground = mongoose.model('Campground', CampgroundSchema)
 module.exports = Campground;
 

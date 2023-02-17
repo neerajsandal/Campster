@@ -1,7 +1,9 @@
 if (process.env.NODE_ENV !== 'production') {
     require('dotenv').config()
 }
-
+// npm i -g npm-check-updates
+// ncu -u
+// npm i 
 const mongoose = require('mongoose')
 const express = require('express')
 const app = express()

@@ -7,7 +7,7 @@ exports.loadGoogleLogin = async (req, res, next) => {
 };
 
 exports.googleRegisterOrLogin = async (req, res, next) => {
-  req.flash('success', 'welcome back google user');
+  req.flash('success', 'Welcome Google User');
   const redirectUrl = req.session.returnTo || '/campgrounds';
   delete req.session.returnTo;
   res.redirect(redirectUrl);
